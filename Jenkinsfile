@@ -1,34 +1,21 @@
 pipeline {
-    agent {
-        label "windows"
-    }
-    tools {
-        maven 'Maven3.1.1'
-        jdk 'java8'
-    }
+    agent any
+
     stages {
-        stage ('Initialize') {
+        stage('Build') {
             steps {
-                bat '''
-                    echo "PATH = %PATH%"
-                    echo "M2_HOME = %M2_HOME%"
-                '''
+                echo 'Building..'
             }
         }
-
-        stage ('Build') {
+        stage('Test') {
             steps {
-                    bat 'cd NumberGenerator & mvn install'
-            }
-             post {
-                success {
-                    junit 'NumberGenerator/target/surefire-reports/*.xml'
-                        }
-                 }
-               
-
-           
+                echo 'Testing..'
             }
         }
-    
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
