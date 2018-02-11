@@ -1,21 +1,32 @@
 pipeline {
     agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+    tools {
+        maven 'Maven3.1.1'
+        jdk 'java8'
     }
+    stages {
+        stage ('Initialize') {
+            steps {
+                bat '''
+                    echo "PATH = %PATH%"
+                    echo "M2_HOME = %M2_HOME%"
+                '''
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                    bat 'cd NumberGenerator & mvn install'
+            }
+             post {
+                success {
+                    junit 'target/surefire-reports/TEST-com.mkyong.AppTest.xml'
+                        }
+                 }
+               
+
+           
+            }
+        }
+    
 }
