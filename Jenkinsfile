@@ -20,7 +20,7 @@ pipeline {
             }
              post {
                 success {
-                    junit 'target/surefire-reports/TEST-com.mkyong.AppTest.xml'
+                    junit 'target/surefire-reports/*.xml'
                         }
                  }
                
