@@ -19,7 +19,10 @@ pipeline {
                     bat 'cd NumberGenerator & mvn install'
                     powershell '''
                                $list = Get-childitem
-                               Write-Output "$list"
+                               foreach($file in $list)
+                               {
+                                 Write-Output("$file")
+                               }
                     '''           
                    /* powershell 'Write-Output "Hello, World!"' */
             }
