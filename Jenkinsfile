@@ -17,12 +17,10 @@ pipeline {
         stage ('Build') {
             steps {
                     bat 'cd NumberGenerator & mvn install'
+                    powershell 'Write-Output "Hello, World!"'
             }
             
-            stage ('execute powershell Script') {
-                   steps {
-                        powershell 'Write-Output "Hello, World!"'
-                   }
+            
              /* post {
                 success {
                     junit 'target/surefire-reports/*.xml'
