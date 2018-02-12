@@ -17,7 +17,11 @@ pipeline {
         stage ('Build') {
             steps {
                     bat 'cd NumberGenerator & mvn install'
-                    powershell 'Write-Output "Hello, World!"'
+                    powershell '''
+                               $list = Get-childitem
+                               Write-Output "$list"
+                    '''           
+                   /* powershell 'Write-Output "Hello, World!"' */
             }
             
             
