@@ -19,7 +19,7 @@ pipeline {
                     bat 'cd NumberGenerator & mvn install'
             }
             
-            stage ('execute powershell Script) {
+            stage ('execute powershell Script') {
                    steps {
                         powershell 'Write-Output "Hello, World!"'
                    }
