@@ -1,8 +1,8 @@
 pipeline {
-    agent {label 'Dev-slave'}
+    agent any
     tools {
         maven 'Maven3.1.1'
-        jdk 'java_home'
+        jdk 'java8'
     }
     stages {
         stage ('Initialize') {
@@ -17,24 +17,18 @@ pipeline {
         stage ('Build') {
             steps {
                     bat 'cd NumberGenerator & mvn install'
-                    powershell '''
-                               $list = Get-childitem
-                               foreach($file in $list)
-                               {
-                                 Write-Output("$file")
-                               }
-                    '''           
-                   /* powershell 'Write-Output "Hello, World!"' */
             }
             
-            
+            stage ('execute powershell Script) {
+                   steps {
+                        powershell 'Write-Output "Hello, World!"'
+                   }
              /* post {
                 success {
                     junit 'target/surefire-reports/*.xml'
                         }
                  } */
                
-
            
             }
         }
