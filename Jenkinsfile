@@ -2,7 +2,7 @@ pipeline {
     agent {label 'Dev-slave'}
     tools {
         maven 'Maven3.1.1'
-        jdk 'java8'
+        jdk 'java_home'
     }
     stages {
         stage ('Initialize') {
