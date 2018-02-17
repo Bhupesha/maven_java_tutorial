@@ -1,10 +1,10 @@
-node('test') {
-            checkout scm
-            try {
-                
+pipeline {
+    agent { label 'test' } 
+    stages {
+        stage('Example Build') {
+            steps {
                 sh 'git'
             }
-            finally {
-                
-            }
         }
+    }
+}
