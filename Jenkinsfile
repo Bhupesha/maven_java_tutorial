@@ -1,42 +1,12 @@
 pipeline {
-    agent any
-    tools {
-        maven 'Maven3.1.1'
-        jdk 'java8'
-    }
+    agent node1
+
     stages {
-        stage ('Initialize') {
+        stage('Build') {
             steps {
-                bat '''
-                    echo "PATH = %PATH%"
-                    echo "M2_HOME = %M2_HOME%"
-                '''
+                sh 'git' 
+                
             }
         }
-
-        stage ('Build') {
-            steps {
-                    bat 'cd NumberGenerator & mvn install'
-                    powershell '''
-                               $list = Get-childitem
-                               foreach($file in $list)
-                               {
-                                 Write-Output("$file")
-                               }
-                    '''           
-                   /* powershell 'Write-Output "Hello, World!"' */
-            }
-            
-            
-             /* post {
-                success {
-                    junit 'target/surefire-reports/*.xml'
-                        }
-                 } */
-               
-
-           
-            }
-        }
-    
+    }
 }
