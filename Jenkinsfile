@@ -1,12 +1,10 @@
-pipeline {
-    agent node1
-
-    stages {
-        stage('Build') {
-            steps {
-                sh 'git' 
+node('node1') {
+            checkout scm
+            try {
+                
+                sh 'git'
+            }
+            finally {
                 
             }
         }
-    }
-}
