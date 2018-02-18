@@ -1,9 +1,5 @@
 pipeline {
-    agent { label 'test' }
-    tools {
-        git 'git'
-        
-    }
+    agent { label 'test' }    
     stages {
         stage('Example Build') {
             steps {
