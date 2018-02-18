@@ -1,8 +1,8 @@
 pipeline {
     agent { label 'test' }
     tools {
-        maven 'Maven3.1.1'
-        jdk 'java8'
+        git 'git'
+        
     }
     stages {
         stage('Example Build') {
