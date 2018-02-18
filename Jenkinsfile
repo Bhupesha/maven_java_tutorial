@@ -24,6 +24,7 @@ pipeline {
                    /* powershell 'Write-Output "Hello, World!"' */
             }
     
+    }
     
 }
 
