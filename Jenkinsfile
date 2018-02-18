@@ -10,7 +10,7 @@ pipeline {
                 sh 'git --help'
             }
         }
-    }
+    
     stage ('Build') {
             steps {
                     sh 'cd NumberGenerator & mvn install'
@@ -26,4 +26,4 @@ pipeline {
     
     
 }
-}
+
