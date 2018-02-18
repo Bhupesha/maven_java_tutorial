@@ -13,7 +13,7 @@ pipeline {
     
     stage ('Build') {
             steps {
-                    sh 'cd NumberGenerator/ & mvn install'
+                    sh 'cd NumberGenerator && mvn install'
                     powershell '''
                                $list = Get-childitem
                                foreach($file in $list)
