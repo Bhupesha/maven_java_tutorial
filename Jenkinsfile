@@ -1,6 +1,6 @@
 pipeline {
-    agent { label 'test' 
-           parameters {
+    agent { label 'test'}
+    parameters {
             choice(
                 name: 'Nodes',
                 choices:"Linux\nMac",
@@ -13,10 +13,7 @@ pipeline {
                 name: 'Path',
                 defaultValue:"/home/pencillr/builds/",
                 description: "Where to put the build!")
-           }
-         
-          }
-           
+    }
     tools {
         maven 'Maven3.1.1'
         jdk 'java8'
