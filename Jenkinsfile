@@ -1,5 +1,21 @@
 pipeline {
-    agent { label 'test' }
+    agent { label 'test' 
+           parameters {
+            choice(
+                name: 'Nodes',
+                choices:"Linux\nMac",
+                description: "Choose Node!")
+            choice(
+                name: 'Versions',
+                choices:"3.4\n4.4",
+                description: "Build for which version?" )
+            string(
+                name: 'Path',
+                defaultValue:"/home/pencillr/builds/",
+                description: "Where to put the build!")
+         
+          }
+           
     tools {
         maven 'Maven3.1.1'
         jdk 'java8'
